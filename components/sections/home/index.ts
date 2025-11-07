@@ -1,0 +1,10 @@
+export { HeroSection } from "./hero-section";
+export { ServicesSection } from "./services-section";
+export { PricingSection } from "./pricing-section";
+export { TestimonialsSection } from "./testimonials-section";
+export { FaqSection } from "./faq-section";
+export { CtaSection } from "./cta-section";
+export { LogoCarousel } from "./logo-carousel";
+export { ProcessSection } from "./process-section";
+export { CaseStudySection } from "./case-study-section";
+export { BenefitsSection } from "./benefits-section";
