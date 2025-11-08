@@ -34,14 +34,12 @@ const SERVICE_DETAILS = [
     chips: ["Leads", "Content", "Social post"],
     demo: "crm",
   },
-];
+] as const;
 
 export function ServicesSection({ services }: ServicesSectionProps) {
-  const prefersReducedMotion = useReducedMotion();
-  const serviceDetails = SERVICE_DETAILS.map((detail, idx) => ({
-    ...detail,
-    description: services[idx]?.description ?? detail.description,
-  }));
+  const prefersReducedMotion = useReducedMotion() ?? false;
+  void services;
+  const serviceDetails = SERVICE_DETAILS;
 
   return (
     <Section id="services" className="bg-black py-24">
