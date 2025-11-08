@@ -11,6 +11,8 @@ type HeroSectionProps = {
 export function HeroSection({ hero }: HeroSectionProps) {
   const prefersReducedMotion = useReducedMotion();
   const stagger = prefersReducedMotion ? 0 : 0.08;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const videoSrc = `${basePath}/hero-background.mp4`;
 
   const baseVariants = {
     hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
@@ -30,8 +32,10 @@ export function HeroSection({ hero }: HeroSectionProps) {
           loop
           muted
           playsInline
+          preload="auto"
+          aria-hidden="true"
         >
-          <source src="/hero-background.mp4" type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
         </video>
       </div>
       <Container className="relative flex max-w-3xl flex-col items-center gap-10 text-center">

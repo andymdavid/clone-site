@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { fontVariables, inter } from "@/lib/fonts";
 import { Header } from "@/components/layout/header";
@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description:
     "Clone of the Clone AI automation marketing site showcasing hero storytelling, interactive services, and lead-gen flows.",
   metadataBase: new URL("https://clone-replica.local"),
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
