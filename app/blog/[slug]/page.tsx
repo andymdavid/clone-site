@@ -4,15 +4,16 @@ import { Container, Section } from "@/components/ui";
 import { blogPosts } from "@/lib/data/blog-posts";
 
 interface BlogPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: BlogPageProps): Metadata {
-  const post = blogPosts.find((entry) => entry.slug === params.slug);
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts.find((entry) => entry.slug === slug);
   if (!post) return {};
   return {
     title: `${post.title} — Clone Blog`,
@@ -20,8 +21,9 @@ export function generateMetadata({ params }: BlogPageProps): Metadata {
   };
 }
 
-export default function BlogPostPage({ params }: BlogPageProps) {
-  const post = blogPosts.find((entry) => entry.slug === params.slug);
+export default async function BlogPostPage({ params }: BlogPageProps) {
+  const { slug } = await params;
+  const post = blogPosts.find((entry) => entry.slug === slug);
   if (!post) {
     notFound();
   }
