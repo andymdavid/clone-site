@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { LinkProps } from "next/link";
 import { footerNav, CAL_URL } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -56,7 +57,7 @@ function FooterColumn({
   links,
 }: {
   title: string;
-  links: { href: string; label: string }[];
+  links: { href: LinkProps["href"]; label: string }[];
 }) {
   return (
     <div className="space-y-3 text-sm">
@@ -78,7 +79,7 @@ function FooterHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+function FooterLink({ href, children }: { href: LinkProps["href"]; children: React.ReactNode }) {
   return (
     <Link
       href={href}
